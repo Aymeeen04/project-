@@ -1,0 +1,102 @@
+#include<stdio.h>
+int tab[100],i,j,temp,n,swap;
+
+void scantab() {
+printf("enter n");
+scanf("%d",&n);
+printf("elements of tab\n");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&tab[i]);
+	}
+}
+
+void printtab() {
+	for(i=0;i<n;i++)
+	{
+		printf("%d\n",tab[i]);
+	} }
+void order1() { 
+for(i=0;i<n;i++){
+  for(j=i+1;j<n;j++){
+			if(tab[i]<tab[j])
+			{
+				temp=tab[i];
+				tab[i]=tab[j];
+				tab[j]=temp;
+			}
+		}
+	}
+	
+}
+
+
+void order2() {
+for (i=1; i<=n-1;i++) {
+j=i;
+while (j>0 && tab[j]>tab[j-1]){
+			temp= tab[j];
+			tab[j] = tab[j - 1];
+			tab[j - 1] = temp;
+			j--;
+
+		}
+	}
+}
+void order3() {
+for(i= 0;i<n-1;i++) {
+		temp=i;
+		for (j=i+1;j< n;j++) {
+
+			if (tab[temp] < tab[j])
+				temp=j;
+		}
+		if (temp!=i) {
+			swap = tab[i];
+			tab[i] = tab[temp];
+			tab[temp] = swap;
+
+		}
+	}
+}
+
+void order4() { 
+for(i=0;i<n-1;i++) {
+for (j= 0; j<n-i-1;j++) {
+			if (tab[j] <tab[j+1]){
+				swap =tab[j];
+				tab[j]= tab[j+1];
+				tab[j+1] = swap;
+			}
+		}
+	}
+
+}
+
+
+int main()
+{
+	scantab();
+	order1();
+ printf("order 1:\n\n");
+ printtab();
+
+ scantab();
+ order2();
+ printf("order 2:\n\n");
+ printtab ();
+
+ scantab();
+ order3();
+ printf("order 3:\n\n");
+ printtab ();
+
+scantab();
+ order4();
+ printf("order 4:\n\n");
+ printtab ();
+
+
+}
+
+    
